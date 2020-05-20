@@ -1,0 +1,10 @@
+.user img {
+    width: 180px;
+    height: 180px;
+}
+
+.bg_container img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
