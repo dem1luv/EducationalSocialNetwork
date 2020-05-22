@@ -4,7 +4,7 @@ import s from "./Header.module.css";
 function Header () {
     return (
         <header className={s.header}>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Vk_Logo.svg/1024px-Vk_Logo.svg.png" alt=""/>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Lineage_OS_Logo.png" alt=""/>
         </header>
     );
 }

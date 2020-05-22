@@ -1,12 +1,12 @@
 import React from "react";
-import s from "./Messages.module.css";
+import s from "./Music.module.css";
 
-function Messages () {
+function Music () {
     return (
         <div>
-            Messages
+            Music
         </div>
     );
 }
 
-export default Messages;
+export default Music;

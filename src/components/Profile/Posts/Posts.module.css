@@ -1,19 +1,9 @@
-.profile {
-    grid-area: content;
-    background-color: #80e1ff;
+.posts {
+    padding: 15px 0;
+    background-color: #fff;
+    border-radius: 10px;
 }
 
-.bg_container img {
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
-}
-
-.user img {
-    width: 100px;
-    height: 100px;
-}
-
-.item {
-    color: red;
+.posts h3 {
+    padding: 0 15px;
 }

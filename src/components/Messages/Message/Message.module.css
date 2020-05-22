@@ -1,24 +1,15 @@
-.messages {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
+.message {
+    margin: 0 0 20px 0;
 }
 
-.usersItems {
-    padding: 15px;
+.message:last-child {
+    margin: 0;
 }
 
-.usersItems .user {
-
+.user {
+    font-size: 10px;
 }
 
-.usersItems .user a {
-    color: #fff;
-}
-
-.messagesItems {
-    padding: 15px;
-}
-
-.messagesItems .message {
+.text {
 
 }

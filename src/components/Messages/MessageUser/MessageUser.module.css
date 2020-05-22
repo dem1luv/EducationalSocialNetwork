@@ -1,24 +1,12 @@
-.messages {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
-}
-
-.usersItems {
-    padding: 15px;
-}
-
-.usersItems .user {
+.user {
 
 }
 
-.usersItems .user a {
-    color: #fff;
+.user a {
+    color: #000;
+    opacity: 0.5;
 }
 
-.messagesItems {
-    padding: 15px;
-}
-
-.messagesItems .message {
-
+.user a.active {
+    opacity: 1;
 }

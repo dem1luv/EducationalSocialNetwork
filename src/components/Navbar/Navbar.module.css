@@ -1,12 +1,25 @@
-.nav {
+.aside {
     grid-area: nav;
-    background-color: #d3ff80;
 }
 
-.item {
-    color: black;
+.nav {
+    background-color: #fff;
+    padding: 25px 15px;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
 }
 
-.item.active {
-    color: deeppink;
+.item a{
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    font-size: 20px;
+    color: #404257;
+    padding: 0 0 8px 0;
+}
+
+.item a.active {
+    color: #fe5c43;
 }

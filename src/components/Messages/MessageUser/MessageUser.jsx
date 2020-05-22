@@ -1,34 +1,15 @@
 import React from "react";
-import s from "./Messages.module.css";
+import s from "./MessageUser.module.css";
 import {NavLink} from "react-router-dom";
 
-function Messages () {
+function MessageUser(props) {
+    let path = "/messages/" + props.id;
+
     return (
-        <div className={s.messages}>
-            <div className={s.usersItems}>
-                <div className={s.user}>
-                    <NavLink to="/messages/1">Dmytro</NavLink>
-                </div>
-                <div className={s.user}>
-                    <NavLink to="/messages/2">Kuat</NavLink>
-                </div>
-                <div className={s.user}>
-                    <NavLink to="/messages/3">Sanja</NavLink>
-                </div>
-                <div className={s.user}>
-                    <NavLink to="/messages/4">Alexandr</NavLink>
-                </div>
-                <div className={s.user}>
-                    <NavLink to="/messages/5">Jolyne</NavLink>
-                </div>
-            </div>
-            <div className={s.messagesItems}>
-                <div className={s.message}>Hey what's up nigga?</div>
-                <div className={s.message}>Fine bro and you?</div>
-                <div className={s.message}>Nice</div>
-            </div>
+        <div className={s.user}>
+            <NavLink to={path} activeClassName={s.active}>{props.name}</NavLink>
         </div>
     );
 }
 
-export default Messages;
+export default MessageUser;

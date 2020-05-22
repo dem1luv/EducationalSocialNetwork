@@ -1,12 +1,12 @@
 import React from "react";
-import s from "./Messages.module.css";
+import s from "./Settings.module.css";
 
-function Messages () {
+function Settings () {
     return (
         <div>
-            Messages
+            Settings
         </div>
     );
 }
 
-export default Messages;
+export default Settings;

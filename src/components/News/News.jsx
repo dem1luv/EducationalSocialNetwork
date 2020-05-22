@@ -1,12 +1,12 @@
 import React from "react";
-import s from "./Messages.module.css";
+import s from "./News.module.css";
 
-function Messages () {
+function News () {
     return (
         <div>
-            Messages
+            News
         </div>
     );
 }
 
-export default Messages;
+export default News;

@@ -1,8 +1,8 @@
 import React from "react";
-import s from "./Navbar.module.css";
+import s from "./AsideMessages.module.css";
 import {NavLink} from "react-router-dom";
 
-function Navbar () {
+function AsideMessages () {
     return (
         <aside className={s.aside}>
             <nav className={s.nav}>
@@ -26,4 +26,4 @@ function Navbar () {
     );
 }
 
-export default Navbar;
+export default AsideMessages;

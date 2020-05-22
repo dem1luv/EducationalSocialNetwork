@@ -1,15 +1,35 @@
-.profile {
-    grid-area: content;
-    background-color: #80e1ff;
+.messages {
+    display: grid;
+    grid-template: "users messages" "users send";
+    grid-template-columns: 1fr 10fr;
+    grid-template-rows: auto 50px;
+    background-color: #fff;
+    border-radius: 10px;
 }
 
-.user img {
-    width: 180px;
-    height: 180px;
+.usersItems {
+    padding: 15px;
+    grid-area: users;
 }
 
-.bg_container img {
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
+.messagesItems {
+    padding: 15px;
+    grid-area: messages;
+}
+
+.sendContainer {
+    grid-area: send;
+}
+
+.sendContainer textarea {
+    width: calc(100% - 120px);
+    height: 50px;
+    padding: 5px 10px;
+}
+
+.sendContainer input[type="button"] {
+    width: 120px;
+    height: 50px;
+    position: relative;
+    bottom: 20px;
 }

@@ -1,3 +1,7 @@
+.aside {
+    grid-area: asideMessages;
+}
+
 .nav {
     grid-area: nav;
     background-color: #fff;
