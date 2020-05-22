@@ -1,5 +1,13 @@
+const ADD_POST = "ADD-POST";
+const CHANGE_POST_TEXTAREA = "CHANGE-POST-TEXTAREA";
+const SEND_MESSAGE = "SEND-MESSAGE";
+const CHANGE_MESSAGE_TEXTAREA = "CHANGE-MESSAGE-TEXTAREA";
+
 let store = {
     state: {
+        currentUser: {
+            name: "Dmytro",
+        },
         profilePage: {
             posts: [
                 {
@@ -39,6 +47,7 @@ let store = {
                 {id: 2, user: "Dmytro", text: "Fine bro and you?"},
                 {id: 3, user: "Kuat", text: "Nice"},
             ],
+            textAreaText: "",
         },
     },
 
@@ -50,7 +59,7 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === "ADD-POST") {
+        if (action.type === ADD_POST) {
             if(this.state.profilePage.textAreaText !== "") {
                 let post = {
                     id: 5,
@@ -58,18 +67,39 @@ let store = {
                     likesCount: 0,
                 };
                 this.state.profilePage.posts.push(post);
-                this.dispatch({type: "CHANGE-TEXTAREA", text: ""});
+                this.dispatch({type: CHANGE_POST_TEXTAREA, text: ""});
             }
-        } else if (action.type === "CHANGE-TEXTAREA") { // text
+        }
+        else if (action.type === CHANGE_POST_TEXTAREA) { // text
             this.state.profilePage.textAreaText = action.text;
+            this.renderReactDOM(this.state);
+        }
+        else if (action.type === SEND_MESSAGE) { // text
+            if(this.state.messagesPage.textAreaText !== "") {
+                let message = {
+                    id: 4,
+                    user: this.state.currentUser.name,
+                    text: this.state.messagesPage.textAreaText,
+                };
+                this.state.messagesPage.messages.push(message);
+                this.dispatch({type: CHANGE_MESSAGE_TEXTAREA, text: ""});
+            }
+        }
+        else if (action.type === CHANGE_MESSAGE_TEXTAREA) { // text
+            this.state.messagesPage.textAreaText = action.text;
             this.renderReactDOM(this.state);
         }
     },
 }
 
-export const addPostActionCreator = () => ({type: "ADD-POST"});
-export const changeTextareaActionCreator = (text) => ({
-    type: "CHANGE-TEXTAREA",
+export const addPostActionCreator = () => ({type: ADD_POST});
+export const changePostTextAreaActionCreator = (text) => ({
+    type: CHANGE_POST_TEXTAREA,
+    text: text,
+});
+export const sendMessageActionCreator = () => ({type: SEND_MESSAGE});
+export const changeMessageTextareaActionCreator = (text) => ({
+    type: CHANGE_MESSAGE_TEXTAREA,
     text: text,
 });
 

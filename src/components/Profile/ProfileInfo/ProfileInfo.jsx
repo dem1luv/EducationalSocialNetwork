@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
-import {addPostActionCreator, changeTextareaActionCreator} from "../../../redux/state";
+import {addPostActionCreator, changePostTextAreaActionCreator} from "../../../redux/state";
 
 function ProfileInfo(props) {
     let textAreaElement = React.createRef();
@@ -11,7 +11,7 @@ function ProfileInfo(props) {
 
     let textAreaChange = () => {
         let text = textAreaElement.current.value;
-        props.dispatch(changeTextareaActionCreator(text));
+        props.dispatch(changePostTextAreaActionCreator(text));
     }
 
     return (

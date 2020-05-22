@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Messages.module.css";
 import MessageUser from "./MessageUser/MessageUser";
 import Message from "./Message/Message";
+import {changeMessageTextareaActionCreator, sendMessageActionCreator} from "../../redux/state";
 
 function Messages(props) {
 
@@ -14,8 +15,12 @@ function Messages(props) {
     let textareaElement = React.createRef();
 
     let sendMessage = () => {
+        props.dispatch(sendMessageActionCreator());
+    }
+
+    let textAreaChange = () => {
         let text = textareaElement.current.value;
-        alert(text);
+        props.dispatch(changeMessageTextareaActionCreator(text));
     }
 
     return (
@@ -27,7 +32,7 @@ function Messages(props) {
                 {messagesElements}
             </div>
             <div className={s.sendContainer}>
-                <textarea ref={textareaElement}></textarea>
+                <textarea ref={textareaElement} onChange={textAreaChange} value={props.state.messagesPage.textAreaText}/>
                 <input className="button" onClick={sendMessage} type="button" value="Send"/>
             </div>
         </div>
