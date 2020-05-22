@@ -5,10 +5,10 @@ import Message from "./Message/Message";
 
 function Messages(props) {
 
-    let usersElements = props.store.state.messagesPage.users
+    let usersElements = props.state.messagesPage.users
         .map(u => <MessageUser name={u.name} id={u.id}/>)
 
-    let messagesElements = props.store.state.messagesPage.messages
+    let messagesElements = props.state.messagesPage.messages
         .map(m => <Message user={m.user} text={m.text}/>)
 
     let textareaElement = React.createRef();

@@ -7,8 +7,8 @@ function Profile(props) {
 
     return (
         <div>
-            <ProfileInfo store={props.store}/>
-            <Posts store={props.store}/>
+            <ProfileInfo state={props.state} dispatch={props.dispatch}/>
+            <Posts state={props.state}/>
         </div>
     );
 }

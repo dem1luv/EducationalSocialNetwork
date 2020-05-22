@@ -18,8 +18,8 @@ function App(props) {
                 <Header/>
                 <Navbar/>
                 <div className="app_wrapper_content">
-                    <Route path="/profile" render={() => <Profile store={props.store}/>}/>
-                    <Route path="/messages" render={() => <Messages store={props.store}/>}/>
+                    <Route path="/profile" render={() => <Profile state={props.state} dispatch={props.dispatch}/>}/>
+                    <Route path="/messages" render={() => <Messages state={props.state}/>}/>
                     {/*<Route path="/profile" component={Profile}/>
                     <Route path="/messages" component={Messages}/>*/}
                     <Route path="/music" component={Music}/>

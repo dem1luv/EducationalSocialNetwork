@@ -1,16 +1,17 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
+import {addPostActionCreator, changeTextareaActionCreator} from "../../../redux/state";
 
 function ProfileInfo(props) {
     let textAreaElement = React.createRef();
 
     let addPost = () => {
-        props.store.addPost();
+        props.dispatch(addPostActionCreator());
     }
 
     let textAreaChange = () => {
         let text = textAreaElement.current.value;
-        props.store.changeTextAreaText(text);
+        props.dispatch(changeTextareaActionCreator(text));
     }
 
     return (
@@ -29,7 +30,7 @@ function ProfileInfo(props) {
             </div>
             <div className={s.public}>
                 <div>
-                    <textarea ref={textAreaElement} onChange={textAreaChange} value={props.store.state.profilePage.textAreaText}/>
+                    <textarea ref={textAreaElement} onChange={textAreaChange} value={props.state.profilePage.textAreaText}/>
                 </div>
                 <div>
                     <input className="button" onClick={addPost} type="button" value="Publish"/>

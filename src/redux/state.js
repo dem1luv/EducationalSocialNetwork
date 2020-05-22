@@ -1,8 +1,4 @@
 let store = {
-    renderReactDOM() {
-        console.log("renderReactDOM")
-    },
-
     state: {
         profilePage: {
             posts: [
@@ -46,25 +42,35 @@ let store = {
         },
     },
 
-    changeTextAreaText(text) {
-        this.state.profilePage.textAreaText = text;
-        this.renderReactDOM(this.state);
-    },
-
-    addPost() {
-        let post = {
-            id: 5,
-            text: this.state.profilePage.textAreaText,
-            likesCount: 0,
-        };
-        this.state.profilePage.posts.push(post);
-        this.changeTextAreaText("");
-    },
-
     subscribe(observer) {
         this.renderReactDOM = observer;
-        debugger;
+    },
+    renderReactDOM() {
+        console.log("renderReactDOM")
+    },
+
+    dispatch(action) {
+        if (action.type === "ADD-POST") {
+            if(this.state.profilePage.textAreaText !== "") {
+                let post = {
+                    id: 5,
+                    text: this.state.profilePage.textAreaText,
+                    likesCount: 0,
+                };
+                this.state.profilePage.posts.push(post);
+                this.dispatch({type: "CHANGE-TEXTAREA", text: ""});
+            }
+        } else if (action.type === "CHANGE-TEXTAREA") { // text
+            this.state.profilePage.textAreaText = action.text;
+            this.renderReactDOM(this.state);
+        }
     },
 }
+
+export const addPostActionCreator = () => ({type: "ADD-POST"});
+export const changeTextareaActionCreator = (text) => ({
+    type: "CHANGE-TEXTAREA",
+    text: text,
+});
 
 export default store;
