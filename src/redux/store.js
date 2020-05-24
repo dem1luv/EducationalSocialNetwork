@@ -1,13 +1,8 @@
-const ADD_POST = "ADD-POST";
-const CHANGE_POST_TEXTAREA = "CHANGE-POST-TEXTAREA";
-const SEND_MESSAGE = "SEND-MESSAGE";
-const CHANGE_MESSAGE_TEXTAREA = "CHANGE-MESSAGE-TEXTAREA";
+import profileReducer from "./profileReducer";
+import messagesReducer from "./messagesReducer";
 
 let store = {
     state: {
-        currentUser: {
-            name: "Dmytro",
-        },
         profilePage: {
             posts: [
                 {
@@ -48,59 +43,23 @@ let store = {
                 {id: 3, user: "Kuat", text: "Nice"},
             ],
             textAreaText: "",
+            userName: "Dmytro",
         },
     },
 
     subscribe(observer) {
-        this.renderReactDOM = observer;
+        this._callSubscriber = observer;
     },
-    renderReactDOM() {
-        console.log("renderReactDOM")
+    _callSubscriber() {
+        console.log("there's no a \"_callSubscriber\" logic");
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            if(this.state.profilePage.textAreaText !== "") {
-                let post = {
-                    id: 5,
-                    text: this.state.profilePage.textAreaText,
-                    likesCount: 0,
-                };
-                this.state.profilePage.posts.push(post);
-                this.dispatch({type: CHANGE_POST_TEXTAREA, text: ""});
-            }
-        }
-        else if (action.type === CHANGE_POST_TEXTAREA) { // text
-            this.state.profilePage.textAreaText = action.text;
-            this.renderReactDOM(this.state);
-        }
-        else if (action.type === SEND_MESSAGE) { // text
-            if(this.state.messagesPage.textAreaText !== "") {
-                let message = {
-                    id: 4,
-                    user: this.state.currentUser.name,
-                    text: this.state.messagesPage.textAreaText,
-                };
-                this.state.messagesPage.messages.push(message);
-                this.dispatch({type: CHANGE_MESSAGE_TEXTAREA, text: ""});
-            }
-        }
-        else if (action.type === CHANGE_MESSAGE_TEXTAREA) { // text
-            this.state.messagesPage.textAreaText = action.text;
-            this.renderReactDOM(this.state);
-        }
+        this.state.profilePage = profileReducer(this.state.profilePage, action);
+        this.state.messagesPage = messagesReducer(this.state.messagesPage, action);
+
+        this._callSubscriber();
     },
 }
-
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const changePostTextAreaActionCreator = (text) => ({
-    type: CHANGE_POST_TEXTAREA,
-    text: text,
-});
-export const sendMessageActionCreator = () => ({type: SEND_MESSAGE});
-export const changeMessageTextareaActionCreator = (text) => ({
-    type: CHANGE_MESSAGE_TEXTAREA,
-    text: text,
-});
 
 export default store;

@@ -2,25 +2,25 @@ import React from "react";
 import s from "./Messages.module.css";
 import MessageUser from "./MessageUser/MessageUser";
 import Message from "./Message/Message";
-import {changeMessageTextareaActionCreator, sendMessageActionCreator} from "../../redux/state";
+
 
 function Messages(props) {
 
-    let usersElements = props.state.messagesPage.users
+    let usersElements = props.users
         .map(u => <MessageUser name={u.name} id={u.id}/>)
 
-    let messagesElements = props.state.messagesPage.messages
+    let messagesElements = props.messages
         .map(m => <Message user={m.user} text={m.text}/>)
 
     let textareaElement = React.createRef();
 
-    let sendMessage = () => {
-        props.dispatch(sendMessageActionCreator());
+    let onSendMessage = () => {
+        props.sendMessage();
     }
 
-    let textAreaChange = () => {
+    let onTextAreaChange = () => {
         let text = textareaElement.current.value;
-        props.dispatch(changeMessageTextareaActionCreator(text));
+        props.textAreaChange(text);
     }
 
     return (
@@ -32,8 +32,8 @@ function Messages(props) {
                 {messagesElements}
             </div>
             <div className={s.sendContainer}>
-                <textarea ref={textareaElement} onChange={textAreaChange} value={props.state.messagesPage.textAreaText}/>
-                <input className="button" onClick={sendMessage} type="button" value="Send"/>
+                <textarea ref={textareaElement} onChange={onTextAreaChange} value={props.textAreaText}/>
+                <input className="button" onClick={onSendMessage} type="button" value="Send"/>
             </div>
         </div>
     );

@@ -1,0 +1,26 @@
+.user {
+    margin: 0 0 50px 0;
+}
+
+.image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.name {
+
+}
+
+.country {
+
+}
+
+.city {
+
+}
+
+.description {
+
+}
